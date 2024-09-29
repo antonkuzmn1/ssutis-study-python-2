@@ -2,6 +2,8 @@ import random
 
 
 def main():
+    print('lab1')
+
     array = [random.randint(-50, 50) for _ in range(30)]
 
     positive_indices = [i for i, num in enumerate(array) if num > 0]
