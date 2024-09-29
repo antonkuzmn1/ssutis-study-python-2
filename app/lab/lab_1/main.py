@@ -1,17 +1,34 @@
 import random
 
 
+def get_array(length: int) -> list[int]:
+    range_min = -50
+    range_max = 50
+
+    array: list[int] = []
+    for _ in range(length):
+        array.append(random.randint(range_min, range_max))
+
+    return array
+
+
+def process_array(arr):
+    positive = [i for i, x in enumerate(arr) if x > 0]
+
+    n = len(positive)
+    for i in range(n // 2):
+        arr[positive[i]], arr[positive[n - 1 - i]] = arr[positive[n - 1 - i]], arr[positive[i]]
+
+    return arr
+
+
 def main():
-    print('lab1')
+    # noinspection SpellCheckingInspection
+    print('\n2.4 Программирование обработки одномерных массивов')
 
-    array = [random.randint(-50, 50) for _ in range(30)]
-
-    positive_indices = [i for i, num in enumerate(array) if num > 0]
-    num_positives = len(positive_indices)
-
-    for i in range(num_positives // 2):
-        first_idx = positive_indices[i]
-        last_idx = positive_indices[-(i + 1)]
-        array[first_idx], array[last_idx] = array[last_idx], array[first_idx]
-
+    array = get_array(int(input('\nEnter Array Length: ')))
+    print('\nGenerated Array:')
     print(array)
+
+    print('\nProcessed Array:')
+    print(process_array(array))
