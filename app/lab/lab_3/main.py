@@ -6,9 +6,12 @@ def split_string(input_str, char):
 
 
 def main():
-    print('lab3')
+    print('2.6 Алгоритмизация обработки символьных строк. Пользовательские функции')
 
     input_str = "hello, world"
     char = ","
     result = split_string(input_str, char)
     print(result)
+
+if __name__ == '__main__':
+    main()

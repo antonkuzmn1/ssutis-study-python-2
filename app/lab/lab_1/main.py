@@ -32,3 +32,6 @@ def main():
 
     print('\nProcessed Array:')
     print(process_array(array))
+
+if __name__ == '__main__':
+    main()
