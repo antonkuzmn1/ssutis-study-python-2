@@ -1,17 +1,28 @@
-def split_string(input_str, char):
-    pos = input_str.find(char)
-    if pos == -1:
-        return 0
-    return input_str[:pos], input_str[pos + 1:], pos
+def space_string(text, width):
+    a = 0
+    words = text.split()
+    result = ""
+
+    for word in words:
+        result += word + width * ' '
+        a += width
+
+    result = result.strip()
+    a -= width
+
+    return result, a
 
 
+# noinspection SpellCheckingInspection
 def main():
     print('2.6 Алгоритмизация обработки символьных строк. Пользовательские функции')
 
-    input_str = "hello, world"
-    char = ","
-    result = split_string(input_str, char)
-    print(result)
+    text = input("Введите строку: ")
+    width = int(input("Введите ширину: "))
+    result_string, result = space_string(text, width)
+    print(f"Разреженная строка: {result_string}")
+    print(f"Суммарное количество добавленных пробелов: {result}")
+
 
 if __name__ == '__main__':
     main()
