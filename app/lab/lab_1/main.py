@@ -1,37 +1,42 @@
 import random
 
 
-def get_array(length: int) -> list[int]:
-    range_min = -50
-    range_max = 50
-
-    array: list[int] = []
-    for _ in range(length):
-        array.append(random.randint(range_min, range_max))
-
-    return array
+def positive_swap(array: list, start: int, end: int):
+    while start < end:
+        array[start], array[end] = array[end], array[start]
+        start += 1
+        end -= 1
 
 
-def process_array(arr):
-    positive = [i for i, x in enumerate(arr) if x > 0]
-
-    n = len(positive)
-    for i in range(n // 2):
-        arr[positive[i]], arr[positive[n - 1 - i]] = arr[positive[n - 1 - i]], arr[positive[i]]
-
-    return arr
-
-
+# noinspection SpellCheckingInspection
 def main():
-    # noinspection SpellCheckingInspection
     print('\n2.4 Программирование обработки одномерных массивов')
 
-    array = get_array(int(input('\nEnter Array Length: ')))
-    print('\nGenerated Array:')
-    print(array)
+    length = int(input("Введите длину массива: "))
+    array = [random.randint(-50, 50) for _ in range(length)]
+    print(f"Исходный массив: {array}")
+    i = 0
 
-    print('\nProcessed Array:')
-    print(process_array(array))
+    while i < length:
+        if array[i] > 0:
+            end = i
+
+            while end < (length - 1) and array[end] > 0:
+                end += 1
+
+            if array[end] > 0:
+                positive_swap(array, i, end)
+                i = length
+
+            else:
+                positive_swap(array, i, end - 1)
+                i = end
+
+        else:
+            i += 1
+
+    print(f"Обработаннный массив: {array}")
+
 
 if __name__ == '__main__':
     main()
