@@ -80,7 +80,7 @@ class TreeApp(QWidget):
 
         self.setLayout(layout)
         self.setWindowTitle('Binary Search Tree')
-        self.setGeometry(100, 100, 800, 600)
+        self.setGeometry(0, 0, 800, 600)
         self.show()
 
     def insert_sequence(self):

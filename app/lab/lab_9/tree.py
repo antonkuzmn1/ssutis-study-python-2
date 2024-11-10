@@ -73,8 +73,10 @@ class Tree:
         if node.value % n != 0:
             count += 1
 
-        count += self.count_non_multiples(n, node.left)
-        count += self.count_non_multiples(n, node.right)
+        if node.left is not None:
+            count += self.count_non_multiples(n, node.left)
+        if node.right is not None:
+            count += self.count_non_multiples(n, node.right)
 
         return count
 
